@@ -1,0 +1,9 @@
+LSToast is distributed under the MIT License (see LICENSE).
+
+LSToast uses LSTPopView as an automatically resolved external dependency:
+https://github.com/LoSenTrad/LSTPopView
+
+CocoaPods selects the original Objective-C LSTPopView pod (MIT, with LSTTimer).
+Swift Package Manager and Carthage select its native LSTPopViewSwift module (MIT).
+The upstream repository contains the respective copyright and license notices.
+No upstream popup engine sources are vendored into this library.

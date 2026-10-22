@@ -1,0 +1,15 @@
+{
+  "originHash" : "dcd4eee86ebaa3d337fcbf3fe9eaf8673f709ba569bad0a9e7eb8fd21c5ec21d",
+  "pins" : [
+    {
+      "identity" : "lstpopview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LoSenTrad/LSTPopView.git",
+      "state" : {
+        "revision" : "a6099ecf24177f264dccc617043dc5d505482a21",
+        "version" : "1.0.0-lstoast.1"
+      }
+    }
+  ],
+  "version" : 3
+}

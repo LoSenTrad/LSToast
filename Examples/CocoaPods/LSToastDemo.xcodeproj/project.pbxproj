@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37F72CFDF1397E51A14DE2DD /* Pods_LSToastDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A82FD0005C41D617A289C3C /* Pods_LSToastDemo.framework */; };
+		5AB90166FEB2334058E48B61 /* Pods_LSToastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B28FC1E7C13D219F68C0FE /* Pods_LSToastTests.framework */; };
+		D10000000000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000001 /* AppDelegate.swift */; };
+		D10000000000000000000002 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000002 /* SceneDelegate.swift */; };
+		D10000000000000000000003 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000003 /* DemoViewController.swift */; };
+		D10000000000000000000004 /* DemoStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000004 /* DemoStyle.swift */; };
+		D10000000000000000000006 /* LSToastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000006 /* LSToastTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D30000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D70000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D60000000000000000000001;
+			remoteInfo = LSToastDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3116630A85164DD11BEE5A4C /* Pods-LSToastDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSToastDemo.debug.xcconfig"; path = "Target Support Files/Pods-LSToastDemo/Pods-LSToastDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5A82FD0005C41D617A289C3C /* Pods_LSToastDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSToastDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91B28FC1E7C13D219F68C0FE /* Pods_LSToastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSToastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20000000000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D20000000000000000000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D20000000000000000000003 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		D20000000000000000000004 /* DemoStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStyle.swift; sourceTree = "<group>"; };
+		D20000000000000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D20000000000000000000006 /* LSToastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSToastTests.swift; sourceTree = "<group>"; };
+		D20000000000000000000007 /* LSToastDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSToastDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20000000000000000000008 /* LSToastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSToastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7569547D506F037CA970E0B /* Pods-LSToastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSToastTests.debug.xcconfig"; path = "Target Support Files/Pods-LSToastTests/Pods-LSToastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DAC960FDAF18EEA027B95455 /* Pods-LSToastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSToastTests.release.xcconfig"; path = "Target Support Files/Pods-LSToastTests/Pods-LSToastTests.release.xcconfig"; sourceTree = "<group>"; };
+		EFDEE8F00CF0A5B994F7409A /* Pods-LSToastDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSToastDemo.release.xcconfig"; path = "Target Support Files/Pods-LSToastDemo/Pods-LSToastDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D40000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37F72CFDF1397E51A14DE2DD /* Pods_LSToastDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AB90166FEB2334058E48B61 /* Pods_LSToastTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C84BA15B366628C50EDC28B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3116630A85164DD11BEE5A4C /* Pods-LSToastDemo.debug.xcconfig */,
+				EFDEE8F00CF0A5B994F7409A /* Pods-LSToastDemo.release.xcconfig */,
+				D7569547D506F037CA970E0B /* Pods-LSToastTests.debug.xcconfig */,
+				DAC960FDAF18EEA027B95455 /* Pods-LSToastTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D50000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				D50000000000000000000002 /* App */,
+				D50000000000000000000003 /* Tests */,
+				D50000000000000000000004 /* Products */,
+				C84BA15B366628C50EDC28B8 /* Pods */,
+				EEBF75F709A80017FFEE2C1E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D50000000000000000000002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D20000000000000000000001 /* AppDelegate.swift */,
+				D20000000000000000000002 /* SceneDelegate.swift */,
+				D20000000000000000000003 /* DemoViewController.swift */,
+				D20000000000000000000004 /* DemoStyle.swift */,
+				D20000000000000000000005 /* Info.plist */,
+			);
+			path = ../LSToastDemo/App;
+			sourceTree = "<group>";
+		};
+		D50000000000000000000003 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D20000000000000000000006 /* LSToastTests.swift */,
+			);
+			name = Tests;
+			path = ../../Tests/LSToastTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		D50000000000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D20000000000000000000007 /* LSToastDemo.app */,
+				D20000000000000000000008 /* LSToastTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEBF75F709A80017FFEE2C1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A82FD0005C41D617A289C3C /* Pods_LSToastDemo.framework */,
+				91B28FC1E7C13D219F68C0FE /* Pods_LSToastTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D60000000000000000000001 /* LSToastDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0000000000000000000002 /* Build configuration list for PBXNativeTarget "LSToastDemo" */;
+			buildPhases = (
+				6FDDEA18C65241A5F9687221 /* [CP] Check Pods Manifest.lock */,
+				D40000000000000000000003 /* Sources */,
+				D40000000000000000000001 /* Frameworks */,
+				D40000000000000000000004 /* Resources */,
+				A9F55C1257DC15A7230209AC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LSToastDemo;
+			productName = LSToastDemo;
+			productReference = D20000000000000000000007 /* LSToastDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D60000000000000000000002 /* LSToastTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0000000000000000000003 /* Build configuration list for PBXNativeTarget "LSToastTests" */;
+			buildPhases = (
+				A81E1784D14EFCCA7C641D60 /* [CP] Check Pods Manifest.lock */,
+				D40000000000000000000005 /* Sources */,
+				D40000000000000000000002 /* Frameworks */,
+				D40000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D30000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = LSToastTests;
+			productName = LSToastTests;
+			productReference = D20000000000000000000008 /* LSToastTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D70000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					D60000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					D60000000000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = D60000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = DA0000000000000000000001 /* Build configuration list for PBXProject "LSToastDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				Base,
+			);
+			mainGroup = D50000000000000000000001;
+			productRefGroup = D50000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D60000000000000000000001 /* LSToastDemo */,
+				D60000000000000000000002 /* LSToastTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D40000000000000000000004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FDDEA18C65241A5F9687221 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LSToastDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A81E1784D14EFCCA7C641D60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LSToastTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9F55C1257DC15A7230209AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LSToastDemo/Pods-LSToastDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LSToastDemo/Pods-LSToastDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LSToastDemo/Pods-LSToastDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D40000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D10000000000000000000001 /* AppDelegate.swift in Sources */,
+				D10000000000000000000002 /* SceneDelegate.swift in Sources */,
+				D10000000000000000000003 /* DemoViewController.swift in Sources */,
+				D10000000000000000000004 /* DemoStyle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40000000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D10000000000000000000006 /* LSToastTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D30000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D60000000000000000000001 /* LSToastDemo */;
+			targetProxy = D30000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DB0000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG LSTOAST_COCOAPODS";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DB0000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = LSTOAST_COCOAPODS;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB0000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3116630A85164DD11BEE5A4C /* Pods-LSToastDemo.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ../LSToastDemo/App/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.cocoapods;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DB0000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFDEE8F00CF0A5B994F7409A /* Pods-LSToastDemo.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ../LSToastDemo/App/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.cocoapods;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DB0000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7569547D506F037CA970E0B /* Pods-LSToastTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.cocoapods.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSToastDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LSToastDemo";
+			};
+			name = Debug;
+		};
+		DB0000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC960FDAF18EEA027B95455 /* Pods-LSToastTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.cocoapods.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSToastDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LSToastDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA0000000000000000000001 /* Build configuration list for PBXProject "LSToastDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB0000000000000000000001 /* Debug */,
+				DB0000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA0000000000000000000002 /* Build configuration list for PBXNativeTarget "LSToastDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB0000000000000000000003 /* Debug */,
+				DB0000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA0000000000000000000003 /* Build configuration list for PBXNativeTarget "LSToastTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB0000000000000000000005 /* Debug */,
+				DB0000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D70000000000000000000001 /* Project object */;
+}

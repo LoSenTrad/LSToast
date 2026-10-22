@@ -1,0 +1,30 @@
+PODS:
+  - LSToast (1.0.0):
+    - LSTPopView (~> 0.3.10)
+  - LSTPopView (0.3.10):
+    - LSTPopView/Code (= 0.3.10)
+    - LSTTimer
+  - LSTPopView/Code (0.3.10):
+    - LSTTimer
+  - LSTTimer (0.2.10)
+
+DEPENDENCIES:
+  - LSToast (from `../..`)
+
+SPEC REPOS:
+  trunk:
+    - LSTPopView
+    - LSTTimer
+
+EXTERNAL SOURCES:
+  LSToast:
+    :path: "../.."
+
+SPEC CHECKSUMS:
+  LSToast: e89a460a03b19fbc7631a5427d3adc2113175a08
+  LSTPopView: 9379f00f6ce7d1fc620b50ab00ed3ef97b2d4d52
+  LSTTimer: caf8f02ff366ca175cf4c1778d26c166183c1b6f
+
+PODFILE CHECKSUM: 6dc5428ab95111087fdbb0332738b352fd4be5fe
+
+COCOAPODS: 1.17.0

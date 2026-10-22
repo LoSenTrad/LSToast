@@ -1,0 +1,151 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+
+E10000000000000000000001 = {isa = PBXBuildFile; fileRef = E20000000000000000000001;};
+E10000000000000000000002 = {isa = PBXBuildFile; fileRef = E20000000000000000000002;};
+E10000000000000000000003 = {isa = PBXBuildFile; fileRef = E20000000000000000000001; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy);};};
+E10000000000000000000004 = {isa = PBXBuildFile; fileRef = E20000000000000000000002; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy);};};
+E20000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ../../Carthage/Build/LSToast.xcframework; sourceTree = SOURCE_ROOT;};
+E20000000000000000000002 = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ../../Carthage/Build/LSTPopViewSwift.xcframework; sourceTree = SOURCE_ROOT;};
+E40000000000000000000001 = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 10; files = (E10000000000000000000003, E10000000000000000000004); name = "Embed Frameworks"; runOnlyForDeploymentPostprocessing = 0;};
+
+/* Begin PBXBuildFile section */
+		D10000000000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000001 /* AppDelegate.swift */; };
+		D10000000000000000000002 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000002 /* SceneDelegate.swift */; };
+		D10000000000000000000003 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000003 /* DemoViewController.swift */; };
+		D10000000000000000000004 /* DemoStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000004 /* DemoStyle.swift */; };
+		D10000000000000000000005 /* LSToast in Frameworks */ = {isa = PBXBuildFile; productRef = D90000000000000000000001 /* LSToast */; };
+		D10000000000000000000006 /* LSToastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20000000000000000000006 /* LSToastTests.swift */; };
+		D10000000000000000000007 /* LSToast in Frameworks */ = {isa = PBXBuildFile; productRef = D90000000000000000000002 /* LSToast */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D30000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D70000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D60000000000000000000001;
+			remoteInfo = LSToastDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D20000000000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D20000000000000000000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D20000000000000000000003 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		D20000000000000000000004 /* DemoStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStyle.swift; sourceTree = "<group>"; };
+		D20000000000000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D20000000000000000000006 /* LSToastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSToastTests.swift; sourceTree = "<group>"; };
+		D20000000000000000000007 /* LSToastDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSToastDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20000000000000000000008 /* LSToastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSToastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D40000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (E10000000000000000000001, E10000000000000000000002); runOnlyForDeploymentPostprocessing = 0; };
+		D40000000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D50000000000000000000001 = {isa = PBXGroup; children = (D50000000000000000000002 /* App */, D50000000000000000000003 /* Tests */, D50000000000000000000004 /* Products */,); sourceTree = "<group>"; };
+		D50000000000000000000002 /* App */ = {isa = PBXGroup; children = (D20000000000000000000001 /* AppDelegate.swift */, D20000000000000000000002 /* SceneDelegate.swift */, D20000000000000000000003 /* DemoViewController.swift */, D20000000000000000000004 /* DemoStyle.swift */, D20000000000000000000005 /* Info.plist */,); path = ../LSToastDemo/App; sourceTree = "<group>"; };
+		D50000000000000000000003 /* Tests */ = {isa = PBXGroup; children = (D20000000000000000000006 /* LSToastTests.swift */,); name = Tests; path = ../../Tests/LSToastTests; sourceTree = SOURCE_ROOT; };
+		D50000000000000000000004 /* Products */ = {isa = PBXGroup; children = (D20000000000000000000007 /* LSToastDemo.app */, D20000000000000000000008 /* LSToastTests.xctest */,); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D60000000000000000000001 /* LSToastDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0000000000000000000002 /* Build configuration list for PBXNativeTarget "LSToastDemo" */;
+			buildPhases = (D40000000000000000000003 /* Sources */, D40000000000000000000001 /* Frameworks */, D40000000000000000000004 /* Resources */,);
+			buildRules = ();
+			dependencies = ();
+			name = LSToastDemo;
+			packageProductDependencies = ();
+			productName = LSToastDemo;
+			productReference = D20000000000000000000007 /* LSToastDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D60000000000000000000002 /* LSToastTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0000000000000000000003 /* Build configuration list for PBXNativeTarget "LSToastTests" */;
+			buildPhases = (D40000000000000000000005 /* Sources */, D40000000000000000000002 /* Frameworks */, D40000000000000000000006 /* Resources */,);
+			buildRules = ();
+			dependencies = (D30000000000000000000002 /* PBXTargetDependency */,);
+			name = LSToastTests;
+			packageProductDependencies = ();
+			productName = LSToastTests;
+			productReference = D20000000000000000000008 /* LSToastTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D70000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					D60000000000000000000001 = {CreatedOnToolsVersion = 16.0; };
+					D60000000000000000000002 = {CreatedOnToolsVersion = 16.0; TestTargetID = D60000000000000000000001; };
+				};
+			};
+			buildConfigurationList = DA0000000000000000000001 /* Build configuration list for PBXProject "LSToastDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, "zh-Hans", Base,);
+			mainGroup = D50000000000000000000001;
+			packageReferences = ();
+			productRefGroup = D50000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (D60000000000000000000001 /* LSToastDemo */, D60000000000000000000002 /* LSToastTests */,);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D40000000000000000000004 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		D40000000000000000000006 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D40000000000000000000003 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D10000000000000000000001 /* AppDelegate.swift in Sources */, D10000000000000000000002 /* SceneDelegate.swift in Sources */, D10000000000000000000003 /* DemoViewController.swift in Sources */, D10000000000000000000004 /* DemoStyle.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		D40000000000000000000005 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D10000000000000000000006 /* LSToastTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D30000000000000000000002 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = D60000000000000000000001 /* LSToastDemo */; targetProxy = D30000000000000000000001 /* PBXContainerItemProxy */; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DB0000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; CLANG_WARN_DOCUMENTATION_COMMENTS = YES; CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_STRICT_OBJC_MSGSEND = YES; ENABLE_TESTABILITY = YES; GCC_C_LANGUAGE_STANDARD = gnu17; GCC_OPTIMIZATION_LEVEL = 0; GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)",); IPHONEOS_DEPLOYMENT_TARGET = 15.0; ONLY_ACTIVE_ARCH = YES; SDKROOT = iphoneos; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; SWIFT_VERSION = 5.0; }; name = Debug; };
+		DB0000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; CLANG_WARN_DOCUMENTATION_COMMENTS = YES; CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; ENABLE_NS_ASSERTIONS = NO; ENABLE_STRICT_OBJC_MSGSEND = YES; GCC_C_LANGUAGE_STANDARD = gnu17; IPHONEOS_DEPLOYMENT_TARGET = 15.0; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; SWIFT_VERSION = 5.0; VALIDATE_PRODUCT = YES; }; name = Release; };
+		DB0000000000000000000003 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = ../LSToastDemo/App/Info.plist; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.carthage; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; SWIFT_EMIT_LOC_STRINGS = YES; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Debug; };
+		DB0000000000000000000004 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = ../LSToastDemo/App/Info.plist; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.carthage; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; SWIFT_EMIT_LOC_STRINGS = YES; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Release; };
+		DB0000000000000000000005 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {IPHONEOS_DEPLOYMENT_TARGET = 16.0;BUNDLE_LOADER = "$(TEST_HOST)"; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.carthage.tests; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; TARGETED_DEVICE_FAMILY = "1,2"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSToastDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LSToastDemo"; }; name = Debug; };
+		DB0000000000000000000006 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {IPHONEOS_DEPLOYMENT_TARGET = 16.0;BUNDLE_LOADER = "$(TEST_HOST)"; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.lstoast.demo.carthage.tests; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; TARGETED_DEVICE_FAMILY = "1,2"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSToastDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LSToastDemo"; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA0000000000000000000001 /* Build configuration list for PBXProject "LSToastDemo" */ = {isa = XCConfigurationList; buildConfigurations = (DB0000000000000000000001 /* Debug */, DB0000000000000000000002 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		DA0000000000000000000002 /* Build configuration list for PBXNativeTarget "LSToastDemo" */ = {isa = XCConfigurationList; buildConfigurations = (DB0000000000000000000003 /* Debug */, DB0000000000000000000004 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		DA0000000000000000000003 /* Build configuration list for PBXNativeTarget "LSToastTests" */ = {isa = XCConfigurationList; buildConfigurations = (DB0000000000000000000005 /* Debug */, DB0000000000000000000006 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		D80000000000000000000001 /* XCLocalSwiftPackageReference "../.." */ = {isa = XCLocalSwiftPackageReference; relativePath = ../..; };
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D90000000000000000000001 /* LSToast */ = {isa = XCSwiftPackageProductDependency; package = D80000000000000000000001 /* XCLocalSwiftPackageReference "../.." */; productName = LSToast; };
+		D90000000000000000000002 /* LSToast */ = {isa = XCSwiftPackageProductDependency; package = D80000000000000000000001 /* XCLocalSwiftPackageReference "../.." */; productName = LSToast; };
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D70000000000000000000001 /* Project object */;
+}
