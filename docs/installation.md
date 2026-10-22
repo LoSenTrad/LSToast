@@ -21,7 +21,7 @@ platform :ios, '15.0'
 
 target 'YourApp' do
   use_frameworks!
-  pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+  pod 'LSToast', '~> 1.0'
 end
 
 post_install do |installer|
@@ -45,7 +45,15 @@ end
 
 已经直接使用 `LSTPopView` 的 App，可以保留与 `~> 0.3.10` 兼容的显式版本约束，CocoaPods 会统一解析。已有约束不兼容时，应解决版本冲突，不能通过复制第二份弹窗实现绕过解析器。
 
-Git tag 方式读取仓库根目录 podspec，不要求 LSToast 已在公共 Specs 中登记。`pod 'LSToast', '~> 1.0'` 依赖该版本实际存在于公共 Specs；请查阅 [CocoaPods 页面](https://cocoapods.org/pods/LSToast)，不要把本地 lint 当成发布完成。相关语法见 [CocoaPods Podfile 指南](https://guides.cocoapods.org/using/the-podfile.html#from-a-podspec-in-the-root-of-a-library-repo)。
+**1.0.0 已发布到 CocoaPods 公共 Specs，可以直接使用上面的版本声明。** `pod trunk info LSToast` 可查询发布记录，对应的 [公共 podspec](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json) 已可读取。
+
+直接读取 Git tag 中的 podspec 仍可使用以下声明；保留上面的 `post_install`：
+
+```ruby
+pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+```
+
+发布证据见 [1.0.0 验证记录](validation.md)；相关语法见 [CocoaPods Podfile 指南](https://guides.cocoapods.org/using/the-podfile.html#from-a-podspec-in-the-root-of-a-library-repo)。
 
 ## Swift Package Manager
 

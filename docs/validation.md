@@ -20,7 +20,17 @@ Reproduce the SPM run with `scripts/test-demo.sh`. For the other consumers, foll
 
 ## CocoaPods publication boundary
 
-The Git-tag installation is the supported initial distribution path. Version 1.0.0 has not been published to the CocoaPods Trunk public index; the release machine has no authenticated Trunk session. The shorthand `pod 'LSToast', '~> 1.0'` must wait for an actual Trunk publication.
+The initial 1.0.0 GitHub release supported Git-tag installation while public-index publication was still pending because the release machine had no authenticated Trunk session. Git-tag installation remains available as an alternative.
+
+Public-index publication was independently confirmed on 22 October 2026:
+
+- `pod trunk info LSToast` exited 0 and listed version `1.0.0` with owner `LoSenTrad`. The Trunk version record reports a creation time of `2026-10-22 13:42:54 UTC`; this is the record's timestamp, not a claim about when the final Specs commit became available.
+- The [public 1.0.0 podspec](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json) is readable in CocoaPods/Specs; its Git blob is `82930bd8e4b6b81a84ef49d7844f91ae264b4077`.
+- A fresh public-index consumer declaring only `pod 'LSToast', '= 1.0.0'` completed `pod install --repo-update` with exit 0. Its lockfile records `LSToast 1.0.0`, `LSTPopView 0.3.10`, and `LSTTimer 0.2.10` under the `trunk` Specs repository, with no external Git dependency declaration. The published CDN podspec was independently checked against the release podspec.
+- The first two fresh-install attempts hit an HTTP/2 framing error through the local network proxy. The successful run used CocoaPods' per-command `COCOAPODS_CDN_MAX_CONCURRENCY=1` setting; no TLS checks were disabled and no global network configuration was changed.
+- The public-index consumer's generic unsigned iOS Simulator build exited 0 with `BUILD SUCCEEDED`. Its production `LSToast.swift` SHA-256 was `bdda52954c07c5202027be26cb7726930b0cee94c11b684892c07ef9077ca547`, matching the release source. This additional check covered installation and compilation; it did not launch the simulator App or repeat the hosted tests listed above.
+
+The strict Trunk push passed lint, then exited 1 after a timeout while waiting for the GitHub commit API. The server completed publication later. The independent reads above confirmed the published version before any duplicate push was attempted. The public-index declaration is `pod 'LSToast', '~> 1.0'`; the Git tag `1.0.0` remains an alternative. The existing Git tag was not moved.
 
 Strict local `pod lib lint`, with the documented iOS 15 deployment-floor override, compiled successfully (`BUILD SUCCEEDED`) but exited 1 because this machine could not validate the GitHub homepage URL. The warning was retained, and `--allow-warnings` was not used. The complete CocoaPods consumer's build and hosted tests passed independently. CI includes strict lint; a checked-in workflow is not evidence of a successful Actions run.
 

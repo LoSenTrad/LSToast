@@ -53,7 +53,7 @@ platform :ios, '15.0'
 
 target 'YourApp' do
   use_frameworks!
-  pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+  pod 'LSToast', '~> 1.0'
 end
 
 post_install do |installer|
@@ -75,7 +75,15 @@ The legacy popup dependency declares an older deployment target. With newer tool
 
 Run `pod install` and open the generated `.xcworkspace`. The podspec resolves `LSTPopView` and `LSTTimer`; you do not need to declare either separately.
 
-The Git-tag installation above does not require a LSToast entry in the public CocoaPods index. **Version 1.0.0 is not currently published to Trunk; use the Git-tag form above.** Use `pod 'LSToast', '~> 1.0'` only after that version is listed in the [public index](https://cocoapods.org/pods/LSToast). A source repository, a Git tag, and a Trunk publication are separate release steps.
+**Version 1.0.0 is published in the CocoaPods public Specs repository; the version declaration above is ready to use.** Query `pod trunk info LSToast` for the publication record, or inspect the [public podspec](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json).
+
+To install directly from the Git tag instead, replace the Pod declaration with:
+
+```ruby
+pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+```
+
+See the [1.0.0 validation record](docs/validation.md) for publication evidence and verification boundaries.
 
 ### Swift Package Manager
 

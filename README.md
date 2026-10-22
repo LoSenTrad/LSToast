@@ -53,7 +53,7 @@ platform :ios, '15.0'
 
 target 'YourApp' do
   use_frameworks!
-  pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+  pod 'LSToast', '~> 1.0'
 end
 
 post_install do |installer|
@@ -75,7 +75,15 @@ end
 
 执行 `pod install`，然后打开生成的 `.xcworkspace`。Podspec 会自动解析 `LSTPopView` 和 `LSTTimer`，不需要把它们另写一遍。
 
-上面的 Git tag 安装不依赖 LSToast 是否已进入 CocoaPods 公共索引。**1.0.0 当前尚未发布到 Trunk 公共索引，请使用上面的 Git tag 方式。**只有在 [CocoaPods 公共索引](https://cocoapods.org/pods/LSToast) 可查到对应版本后，才可改成 `pod 'LSToast', '~> 1.0'`。源码仓库、Git tag 和 Trunk 发布是分别完成的步骤。
+**1.0.0 已发布到 CocoaPods 公共 Specs，可以直接使用上面的版本声明安装。** 发布记录可通过 `pod trunk info LSToast` 查询；公共 podspec 见 [CocoaPods Specs](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json)。
+
+如果需要直接使用 Git tag，也可将 Pod 声明替换为：
+
+```ruby
+pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+```
+
+验证记录与发布边界见 [1.0.0 验证记录](docs/validation.md)。
 
 ### Swift Package Manager
 
