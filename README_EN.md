@@ -1,8 +1,8 @@
 # LSToast
 
-[中文](README.md) · [Installation details](docs/installation.md) · [Isolation design](docs/architecture.md) · [1.0.0 validation](docs/validation.md)
+[中文](README.md) · [Installation details](docs/installation.md) · [Isolation design](docs/architecture.md) · [2.0.0 validation](docs/validation.md)
 
-UIKit toast messages built on [LSTPopView](https://github.com/LoSenTrad/LSTPopView). Showing, replacing, or dismissing a toast operates on its own popup instance, preserving your application's dialogs, waiting queues, and input focus.
+UIKit toast messages built on native Swift [LSTPopViewSwift](https://github.com/LoSenTrad/LSTPopView/tree/master/Swift). Showing, replacing, or dismissing a toast operates on its own popup instance, preserving your application's dialogs, waiting queues, and input focus.
 
 ```swift
 import LSToast
@@ -30,17 +30,17 @@ The [demo app](Examples/LSToastDemo) demonstrates coexistence with business popu
 - No global popup-removal calls. Each dismissal targets the saved toast instance.
 - Weak, presentation-specific handles. Old handles and timers cannot dismiss a newer toast.
 - Dynamic Type and safe-area layout.
-- CocoaPods, Swift Package Manager, and Carthage automatically fetch LSTPopView as a **separate dependency**.
+- CocoaPods, Swift Package Manager, and Carthage automatically fetch native Swift `LSTPopViewSwift` as a **separate dependency**.
 
 ## Requirements
 
 | Distribution | Minimum OS | Compiler / tools | Automatically installed popup dependency |
 | --- | --- | --- | --- |
-| CocoaPods | iOS 15 | Swift 5.9 or newer | Objective-C `LSTPopView ~> 0.3.10` and its `LSTTimer` dependency |
-| Swift Package Manager | iOS 15 | Swift 6.2 / Xcode 26 or newer | The native Swift `LSTPopViewSwift` product, pinned to version [`1.0.0-lstoast.1`](https://github.com/LoSenTrad/LSTPopView/releases/tag/1.0.0-lstoast.1) (commit `a6099ec`) |
+| CocoaPods | iOS 15 | Swift 6.2 / Xcode 26 or newer | Native Swift `LSTPopViewSwift ~> 0.1.0` |
+| Swift Package Manager | iOS 15 | Swift 6.2 / Xcode 26 or newer | The `LSTPopViewSwift` product, pinned to version [`1.0.0-lstoast.1`](https://github.com/LoSenTrad/LSTPopView/releases/tag/1.0.0-lstoast.1) (commit `a6099ec`) |
 | Carthage | iOS 15 | Swift 6.2 / Xcode 26 or newer; Carthage 0.38+ | The separate `LSTPopViewSwift` dynamic framework at the same pinned revision |
 
-LSToast's public API is the same for all three distributions. The popup module name and API differ by distribution; see [using the popup library directly](docs/installation.md#直接使用-lstpopview). Do not integrate the same LSToast target with more than one dependency manager.
+All three distributions use the native Swift `LSTPopViewSwift` module, which applications can import directly. Its source remains in the [LoSenTrad/LSTPopView](https://github.com/LoSenTrad/LSTPopView) repository as a separate dependency. LSToast 2.0 no longer transitively installs the legacy Objective-C `LSTPopView` or `LSTTimer` pods. See the [1.0 to 2.0 migration guide](docs/installation.md#从-10-升级到-20). Do not integrate the same LSToast target with more than one dependency manager.
 
 ## Installation
 
@@ -53,37 +53,19 @@ platform :ios, '15.0'
 
 target 'YourApp' do
   use_frameworks!
-  pod 'LSToast', '~> 1.0'
-end
-
-post_install do |installer|
-  minimum = Gem::Version.new('15.0')
-
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      current = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-      next unless current.to_s.match?(/\A\d+(?:\.\d+)*\z/)
-      next unless Gem::Version.new(current) < minimum
-
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-    end
-  end
+  pod 'LSToast', '~> 2.0'
 end
 ```
 
-The legacy popup dependency declares an older deployment target. With newer toolchains such as Xcode 27, the `post_install` block above raises Pod targets below iOS 15 to 15. It only adjusts the consumer project's build settings; upstream sources and versions remain unchanged. If your Podfile already has a `post_install` callback, merge the loop into it.
+Run `pod install` and open the generated `.xcworkspace`. The podspec automatically resolves native Swift `LSTPopViewSwift`; no separate popup declaration is required. Both pods declare iOS 15 as their minimum deployment target.
 
-Run `pod install` and open the generated `.xcworkspace`. The podspec resolves `LSTPopView` and `LSTTimer`; you do not need to declare either separately.
+**Public Specs publication for 2.0.0 is being verified.** The 2.0 installation declarations require the corresponding tag and index entry to be available; consult the [2.0.0 validation record](docs/validation.md) for the actual status. Existing 1.0.0 tags and specifications retain their historical behavior.
 
-**Version 1.0.0 is published in the CocoaPods public Specs repository; the version declaration above is ready to use.** Query `pod trunk info LSToast` for the publication record, or inspect the [public podspec](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json).
-
-To install directly from the Git tag instead, replace the Pod declaration with:
+The corresponding Git-tag declaration is:
 
 ```ruby
-pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '2.0.0'
 ```
-
-See the [1.0.0 validation record](docs/validation.md) for publication evidence and verification boundaries.
 
 ### Swift Package Manager
 
@@ -93,12 +75,12 @@ In Xcode, choose **File → Add Package Dependencies…** and enter:
 https://github.com/LoSenTrad/LSToast.git
 ```
 
-Select a version starting at `1.0.0` and add only the `LSToast` product to your app target. Xcode automatically resolves the upstream LSTPopView package and its `LSTPopViewSwift` product. The SPM product uses static linkage and includes transitive dependency symbols: your app can directly `import LSTPopViewSwift` without adding or embedding that product again in the same app target.
+Select a version starting at `2.0.0` and add only the `LSToast` product to your app target. Xcode automatically resolves the upstream LSTPopView package and its `LSTPopViewSwift` product. The SPM product uses static linkage and includes transitive dependency symbols: your app can directly `import LSTPopViewSwift` without adding or embedding that product again in the same app target.
 
 For a Swift package, declare:
 
 ```swift
-.package(url: "https://github.com/LoSenTrad/LSToast.git", from: "1.0.0")
+.package(url: "https://github.com/LoSenTrad/LSToast.git", from: "2.0.0")
 ```
 
 Then add this dependency to your target:
@@ -112,7 +94,7 @@ Then add this dependency to your target:
 Add this to your `Cartfile`:
 
 ```text
-github "LoSenTrad/LSToast" ~> 1.0
+github "LoSenTrad/LSToast" ~> 2.0
 ```
 
 Run:
@@ -216,4 +198,4 @@ Tests focus on queue isolation, touch routing, input focus, window ownership, re
 
 When reporting an issue, include the dependency manager, Xcode / Swift / iOS versions, and a minimal reproduction. See [CONTRIBUTING.md](CONTRIBUTING.md) and [CHANGELOG.md](CHANGELOG.md).
 
-LSToast is available under the [MIT License](LICENSE). LSTPopView and its dependencies retain their own licenses and copyright notices; see [NOTICE](NOTICE).
+LSToast is available under the [MIT License](LICENSE). LSTPopViewSwift retains its own license and copyright notice; see [NOTICE](NOTICE).

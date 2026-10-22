@@ -8,11 +8,13 @@
 2. Use Xcode 26 / Swift 6.2 or newer with an available iOS 16+ iPhone simulator. The demo uses the local Swift package and automatically resolves the upstream popup package.
 3. Run `./scripts/test-demo.sh`. To choose a simulator, pass `SIMULATOR_UDID`; to choose an independent output folder, pass `OUTPUT_DIR`.
 4. Run `python3 scripts/check-docs.py` and `git diff --check` for documentation or packaging changes.
-5. For CocoaPods integration changes, also run `XCODE_XCCONFIG_FILE="$PWD/Tools/iOS15.xcconfig" pod lib lint LSToast.podspec --platforms=ios --verbose`. The checked-in xcconfig raises legacy dependency targets to the supported iOS 15 floor without changing upstream source or versions. Keep lint strict and investigate its actual errors or warnings; do not add `--allow-warnings` to hide an unresolved failure. This is validation, not Trunk publication.
+5. For CocoaPods integration changes, also run `pod lib lint LSToast.podspec --platforms=ios --verbose`. The native Swift dependency and LSToast both declare iOS 15; no legacy deployment-floor override is needed. Keep lint strict and investigate its actual errors or warnings; do not add `--allow-warnings` to hide an unresolved failure. This is validation, not Trunk publication.
 
 ## Scope and compatibility
 
-- Keep the `LSToast` API consistent across the Objective-C CocoaPods backend and native Swift SPM / Carthage backend.
+All distribution paths require a Swift 6.2+ compiler / Xcode 26+. LSToast uses Swift 5 language mode; its native popup dependency uses Swift 6 language mode. These language modes do not lower the complete dependency graph's compiler requirement.
+
+- Use the native Swift `LSTPopViewSwift` dependency for CocoaPods, SPM, and Carthage. Do not reintroduce a package-manager-specific Objective-C backend or vendor another copy of the engine.
 - Never hide or replace business popups by calling a global removal API from toast code.
 - Keep all UI state on `MainActor`, all touch regions transparent to interaction, and all saved popup handles weak where the API promises weak ownership.
 - Preserve per-window state. Do not use a global singleton toast instance that crosses scene ownership.

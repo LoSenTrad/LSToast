@@ -1,9 +1,14 @@
 LSToast is distributed under the MIT License (see LICENSE).
 
-LSToast uses LSTPopView as an automatically resolved external dependency:
+LSToast 2.0 uses native Swift LSTPopViewSwift as an automatically resolved,
+independent external dependency for CocoaPods, Swift Package Manager, and
+Carthage. Its upstream source repository is:
 https://github.com/LoSenTrad/LSTPopView
 
-CocoaPods selects the original Objective-C LSTPopView pod (MIT, with LSTTimer).
-Swift Package Manager and Carthage select its native LSTPopViewSwift module (MIT).
-The upstream repository contains the respective copyright and license notices.
-No upstream popup engine sources are vendored into this library.
+The native LSTPopViewSwift module is distributed under the MIT License.
+The upstream Swift/LICENSE contains its copyright and license notice.
+No upstream popup engine sources are vendored into LSToast.
+
+LSToast 2.0 does not transitively depend on the legacy Objective-C LSTPopView
+or LSTTimer pods. Version 1.0.0 used those pods for its CocoaPods integration;
+its published tags and specifications retain their original behavior.

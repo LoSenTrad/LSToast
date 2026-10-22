@@ -1,41 +1,51 @@
-# 1.0.0 validation
+# 2.0.0 validation
 
-Validated on 22 October 2026 with Xcode 27.1 (27A9275), macOS 27.0, and an arm64 iPhone 17 simulator running iOS 27.0. These are simulator results; physical-device execution and developer/distribution signing were not tested.
+LSToast 2.0.0 unifies CocoaPods, SPM, and Carthage on the native Swift `LSTPopViewSwift` engine. This record is being prepared for that release. **The 2.0.0 checks and publication entries below are pending; the passing 1.0.0 results do not establish a pass for 2.0.0.** Historical evidence is preserved in [validation-1.0.0.md](validation-1.0.0.md).
+
+## Dependency identity
+
+| Integration | Required native dependency | Expected upstream source |
+| --- | --- | --- |
+| CocoaPods | `LSTPopViewSwift ~> 0.1.0`, source tag `swift-0.1.0` | `a6099ecf24177f264dccc617043dc5d505482a21` |
+| Swift Package Manager | `LSTPopViewSwift` product at exact semantic version `1.0.0-lstoast.1` | Same commit |
+| Carthage | `LSTPopViewSwift` framework at the pinned revision | Same commit |
+
+All integrations require an iOS 15+ deployment target and a Swift 6.2+ compiler / Xcode 26+. LSToast uses Swift 5 language mode, and the native dependency uses Swift 6 language mode. LSToast 2.0 must not introduce the legacy Objective-C `LSTPopView` or `LSTTimer` transitively. An application may separately declare an old engine for its own business code; that does not change LSToast's selected engine.
 
 ## Consumer results
 
-| Integration | Actual consumer | Result |
-| --- | --- | --- |
-| Swift Package Manager | [SPM example](../Examples/LSToastDemo), selecting only the LSToast static product | 11 tests passed; 16 executions including parameterized cases |
-| CocoaPods 1.17.0 | [CocoaPods example](../Examples/CocoaPods), declaring only LSToast | 11 tests passed; 16 executions including parameterized cases |
-| Carthage 0.40.0 | [Carthage example](../Examples/Carthage), linking and embedding both dynamic frameworks | 11 tests passed; 16 executions including parameterized cases |
+| Check | Actual result |
+| --- | --- |
+| Release source commit and production source hash | PENDING |
+| Runtime environment: Xcode / Swift / OS / simulator or device | PENDING |
+| SPM hosted isolation tests through the local demo | PENDING |
+| CocoaPods native consumer installation and hosted tests | PENDING |
+| Carthage clean framework build and consumer hosted tests | PENDING |
+| Native dependency public-index installation | PENDING |
+| Strict CocoaPods lint | PENDING |
+| Remote 2.0.0 SPM version installation and hosted tests | PENDING |
+| Remote 2.0.0 CocoaPods Git-tag installation | PENDING |
+| Remote 2.0.0 Carthage dependency resolution | PENDING |
 
-Both App backends directly import and use the automatically fetched popup module. CocoaPods resolved LSTPopView 0.3.10 and LSTTimer 0.2.10. SPM pins semantic version `1.0.0-lstoast.1`; Carthage pins the same upstream source revision `a6099ecf24177f264dccc617043dc5d505482a21`. A versioned Swift package must use semantic-version dependencies rather than revision-only requirements.
+The suite covers real UIKit windows and popup instances: business popup/waiting queue isolation, hit testing through the toast, input focus, key-window preservation, replacement, old handles and timers, independent windows, external removal, invalid input, safe-area layout, and release after expiry. The actual definition/execution counts, failures, skipped tests, commands, and result bundles must be filled from the new runs; no count is inferred from the prior release.
 
-The hosted tests exercise real UIKit windows and popup instances: business popup/waiting queue isolation, hit testing through the toast text and background, `UITextField.isFirstResponder`, key-window preservation, replacement, old handles and timers, independent windows, external removal, invalid input, safe-area layout, and release of presentation objects after expiry. All three test runs had zero failures and zero skipped tests. This is the same test suite exercised through three integration paths, not 33 distinct test definitions.
+Reproduce the SPM run with `scripts/test-demo.sh`. For CocoaPods and Carthage, follow the corresponding example README and run the shared `LSToastDemo` scheme on an available iOS 16+ simulator with a fresh result directory. Hosted tests need iOS 16 for Swift Testing / ContinuousClock; the library and Demo App declare iOS 15 support.
 
-A clean Carthage source build produced `LSToast.xcframework` and `LSTPopViewSwift.xcframework`, each with `ios-arm64` and `ios-arm64_x86_64-simulator` slices. The downstream Carthage App launched these actual dynamic frameworks during its hosted tests. Building a device slice does not establish physical-device execution or distribution signing.
+## Publication status
 
-Reproduce the SPM run with `scripts/test-demo.sh`. For the other consumers, follow their READMEs, then run the shared `LSToastDemo` scheme's tests on an iOS 16+ simulator with a fresh result directory. The library and Demo App declare iOS 15 support; runtime tests on iOS 15 and older supported toolchains have not been performed.
+| Publication or downstream check | Actual result |
+| --- | --- |
+| Upstream `LSTPopViewSwift 0.1.0` public Specs entry | PENDING |
+| LSToast remote `2.0.0` tag and GitHub Release | PENDING |
+| LSToast `2.0.0` public Specs entry | PENDING |
+| Fresh CocoaPods public-index installation and consumer build | PENDING |
+| GitHub Actions for the release commit | PENDING |
+| XCFramework assets, slices, and checksums | PENDING |
 
-## CocoaPods publication boundary
+GitHub publication, public-index publication, successful installation, compilation, hosted tests, device execution, and signing are separate claims. Existing 1.0.0 source tags and CocoaPods specifications remain intact.
 
-The initial 1.0.0 GitHub release supported Git-tag installation while public-index publication was still pending because the release machine had no authenticated Trunk session. Git-tag installation remains available as an alternative.
+## Demo media and runtime boundaries
 
-Public-index publication was independently confirmed on 22 October 2026:
+The [README GIF](images/demo.gif) was recorded from the real SPM demo for 1.0.0, which already used the native Swift engine. It is approximately 20 seconds, 360 pixels wide at 5 frames per second. It shows toast positioning, a business popup coexisting with a toast, toast dismissal while that popup stays visible, and a waiting popup appearing afterward. The 2.0.0 release must confirm that the recording still represents the shipped example or replace it.
 
-- `pod trunk info LSToast` exited 0 and listed version `1.0.0` with owner `LoSenTrad`. The Trunk version record reports a creation time of `2026-10-22 13:42:54 UTC`; this is the record's timestamp, not a claim about when the final Specs commit became available.
-- The [public 1.0.0 podspec](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json) is readable in CocoaPods/Specs; its Git blob is `82930bd8e4b6b81a84ef49d7844f91ae264b4077`.
-- A fresh public-index consumer declaring only `pod 'LSToast', '= 1.0.0'` completed `pod install --repo-update` with exit 0. Its lockfile records `LSToast 1.0.0`, `LSTPopView 0.3.10`, and `LSTTimer 0.2.10` under the `trunk` Specs repository, with no external Git dependency declaration. The published CDN podspec was independently checked against the release podspec.
-- The first two fresh-install attempts hit an HTTP/2 framing error through the local network proxy. The successful run used CocoaPods' per-command `COCOAPODS_CDN_MAX_CONCURRENCY=1` setting; no TLS checks were disabled and no global network configuration was changed.
-- The public-index consumer's generic unsigned iOS Simulator build exited 0 with `BUILD SUCCEEDED`. Its production `LSToast.swift` SHA-256 was `bdda52954c07c5202027be26cb7726930b0cee94c11b684892c07ef9077ca547`, matching the release source. This additional check covered installation and compilation; it did not launch the simulator App or repeat the hosted tests listed above.
-
-The strict Trunk push passed lint, then exited 1 after a timeout while waiting for the GitHub commit API. The server completed publication later. The independent reads above confirmed the published version before any duplicate push was attempted. The public-index declaration is `pod 'LSToast', '~> 1.0'`; the Git tag `1.0.0` remains an alternative. The existing Git tag was not moved.
-
-Strict local `pod lib lint`, with the documented iOS 15 deployment-floor override, compiled successfully (`BUILD SUCCEEDED`) but exited 1 because this machine could not validate the GitHub homepage URL. The warning was retained, and `--allow-warnings` was not used. The complete CocoaPods consumer's build and hosted tests passed independently. CI includes strict lint; a checked-in workflow is not evidence of a successful Actions run.
-
-## Demo media and remaining boundaries
-
-The [README GIF](images/demo.gif) is approximately 20 seconds of real simulator capture, reduced to 360 pixels wide at 5 frames per second. It shows positions, a business popup coexisting with a toast, toast dismissal while the business popup stays visible, and the waiting popup appearing after the business popup is closed. The autoplay sets synthetic input text; input-focus preservation is established by the hosted first-responder test, not by the GIF alone.
-
-Manual VoiceOver behavior, the full Dynamic Type matrix, runtime rotation/scene transitions, an already-visible keyboard before the first bottom toast, and physical devices remain outside this release's verified runtime scope. See [architecture](architecture.md) for the popup manager and keyboard boundaries.
+The autoplay sets synthetic input text; it does not establish first-responder preservation. That behavior requires the new hosted first-responder test. Physical-device execution, distribution signing, manual VoiceOver behavior, the full Dynamic Type matrix, runtime rotation/scene transitions, and an already-visible keyboard before the first bottom toast remain unverified unless an explicit result is added here. See [architecture](architecture.md) for manager and keyboard boundaries.

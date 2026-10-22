@@ -1,8 +1,8 @@
 # LSToast
 
-[English](README_EN.md) · [安装说明](docs/installation.md) · [设计与隔离边界](docs/architecture.md) · [1.0.0 验证记录](docs/validation.md)
+[English](README_EN.md) · [安装说明](docs/installation.md) · [设计与隔离边界](docs/architecture.md) · [2.0.0 验证记录](docs/validation.md)
 
-基于 [LSTPopView](https://github.com/LoSenTrad/LSTPopView) 的 UIKit 轻提示组件。吐司的显示、替换和隐藏只操作自己的弹窗实例，保留 App 内业务弹窗、等待队列和输入焦点。
+基于原生 Swift [LSTPopViewSwift](https://github.com/LoSenTrad/LSTPopView/tree/master/Swift) 的 UIKit 轻提示组件。吐司的显示、替换和隐藏只操作自己的弹窗实例，保留 App 内业务弹窗、等待队列和输入焦点。
 
 ```swift
 import LSToast
@@ -30,17 +30,17 @@ LSToast.show("保存成功", in: view)
 - 仅关闭本次吐司，不调用弹窗管理器的全局移除方法。
 - 单次显示的弱引用 `Handle`，旧句柄和旧计时器不会关闭后来的吐司。
 - 支持 Dynamic Type 和安全区域布局。
-- CocoaPods、Swift Package Manager、Carthage 均将 LSTPopView 作为**独立依赖自动获取**。
+- CocoaPods、Swift Package Manager、Carthage 均将原生 Swift `LSTPopViewSwift` 作为**独立依赖自动获取**。
 
 ## 系统与工具链
 
 | 安装方式 | 最低系统 | 编译器 / 工具链 | 自动安装的弹窗依赖 |
 | --- | --- | --- | --- |
-| CocoaPods | iOS 15 | Swift 5.9 及以上 | `LSTPopView ~> 0.3.10`（Objective-C），以及它的 `LSTTimer` 依赖 |
-| Swift Package Manager | iOS 15 | Swift 6.2 / Xcode 26 及以上 | LSTPopView 仓库中的 `LSTPopViewSwift` 原生 Swift 产品，固定版本 [`1.0.0-lstoast.1`](https://github.com/LoSenTrad/LSTPopView/releases/tag/1.0.0-lstoast.1)（提交 `a6099ec`） |
+| CocoaPods | iOS 15 | Swift 6.2 / Xcode 26 及以上 | `LSTPopViewSwift ~> 0.1.0`，来自上游原生 Swift 源码 |
+| Swift Package Manager | iOS 15 | Swift 6.2 / Xcode 26 及以上 | `LSTPopViewSwift` 产品，固定版本 [`1.0.0-lstoast.1`](https://github.com/LoSenTrad/LSTPopView/releases/tag/1.0.0-lstoast.1)（提交 `a6099ec`） |
 | Carthage | iOS 15 | Swift 6.2 / Xcode 26 及以上；Carthage 0.38+ | 独立的 `LSTPopViewSwift` 动态框架，同一固定 revision |
 
-三种方式的吐司 API 一致。弹窗依赖的模块名和 API 随安装方式不同，见[直接使用弹窗库](docs/installation.md#直接使用-lstpopview)。不要把同一个 LSToast 同时用多种包管理器加入同一个 target。
+三种方式统一使用原生 Swift 模块 `LSTPopViewSwift`，App 可直接导入它。依赖源码仍位于 [LoSenTrad/LSTPopView](https://github.com/LoSenTrad/LSTPopView) 仓库；它是独立依赖。LSToast 2.0 不再自动安装旧 Objective-C `LSTPopView` 或 `LSTTimer`。迁移说明见[从 1.0 升级](docs/installation.md#从-10-升级到-20)。不要把同一个 LSToast 同时用多种包管理器加入同一个 target。
 
 ## 安装
 
@@ -53,37 +53,19 @@ platform :ios, '15.0'
 
 target 'YourApp' do
   use_frameworks!
-  pod 'LSToast', '~> 1.0'
-end
-
-post_install do |installer|
-  minimum = Gem::Version.new('15.0')
-
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      current = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-      next unless current.to_s.match?(/\A\d+(?:\.\d+)*\z/)
-      next unless Gem::Version.new(current) < minimum
-
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-    end
-  end
+  pod 'LSToast', '~> 2.0'
 end
 ```
 
-旧版弹窗依赖的 Pod target 声明了较低的系统版本；Xcode 27 等新工具链需要上面的 `post_install` 将低于 iOS 15 的 target 提到 15。它只调整消费者工程的构建设置，不改上游源码或版本。已有 `post_install` 时把这段循环合并进现有回调。
+执行 `pod install`，然后打开生成的 `.xcworkspace`。Podspec 会自动解析原生 Swift `LSTPopViewSwift`，不需要再声明弹窗库；两个 Pod 的最低系统均为 iOS 15。
 
-执行 `pod install`，然后打开生成的 `.xcworkspace`。Podspec 会自动解析 `LSTPopView` 和 `LSTTimer`，不需要把它们另写一遍。
+**2.0.0 的公共 Specs 发布正在验证中。** 本文中的 2.0 安装声明以对应发布标签和公共索引就绪为前提；实际状态见 [2.0.0 验证记录](docs/validation.md)。1.0.0 已发布的标签和 Specs 保留历史行为，不会被覆盖。
 
-**1.0.0 已发布到 CocoaPods 公共 Specs，可以直接使用上面的版本声明安装。** 发布记录可通过 `pod trunk info LSToast` 查询；公共 podspec 见 [CocoaPods Specs](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/1.0.0/LSToast.podspec.json)。
-
-如果需要直接使用 Git tag，也可将 Pod 声明替换为：
+对应 Git tag 安装写法：
 
 ```ruby
-pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.0'
+pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '2.0.0'
 ```
-
-验证记录与发布边界见 [1.0.0 验证记录](docs/validation.md)。
 
 ### Swift Package Manager
 
@@ -93,12 +75,12 @@ pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '1.0.
 https://github.com/LoSenTrad/LSToast.git
 ```
 
-选择从 `1.0.0` 开始的版本，只将 `LSToast` 产品加入 App target。Xcode 会自动获取上游 LSTPopView 包和 `LSTPopViewSwift` 产品。LSToast 的 SPM 产品使用静态链接，包含传递依赖符号；App 可直接 `import LSTPopViewSwift`，无需再向同一 App target 重复添加或嵌入上游产品。
+选择从 `2.0.0` 开始的版本，只将 `LSToast` 产品加入 App target。Xcode 会自动获取上游包和其中的 `LSTPopViewSwift` 产品。LSToast 的 SPM 产品使用静态链接，包含传递依赖符号；App 可直接 `import LSTPopViewSwift`，无需再向同一 App target 重复添加或嵌入上游产品。
 
 也可在自己的 `Package.swift` 中声明：
 
 ```swift
-.package(url: "https://github.com/LoSenTrad/LSToast.git", from: "1.0.0")
+.package(url: "https://github.com/LoSenTrad/LSToast.git", from: "2.0.0")
 ```
 
 然后在 target 的 `dependencies` 中添加：
@@ -112,7 +94,7 @@ https://github.com/LoSenTrad/LSToast.git
 在 `Cartfile` 中添加：
 
 ```text
-github "LoSenTrad/LSToast" ~> 1.0
+github "LoSenTrad/LSToast" ~> 2.0
 ```
 
 执行：
@@ -216,4 +198,4 @@ SIMULATOR_UDID=你的模拟器UDID OUTPUT_DIR=/tmp/LSToast-check ./scripts/test-
 
 提交问题时请附上安装方式、Xcode / Swift / iOS 版本，以及可以复现的最小代码。开发说明见 [CONTRIBUTING.md](CONTRIBUTING.md)，版本记录见 [CHANGELOG.md](CHANGELOG.md)。
 
-LSToast 使用 [MIT License](LICENSE)。LSTPopView 及其依赖保留各自的许可证和版权；见 [NOTICE](NOTICE)。
+LSToast 使用 [MIT License](LICENSE)。LSTPopViewSwift 保留自己的许可证和版权；见 [NOTICE](NOTICE)。
