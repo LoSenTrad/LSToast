@@ -20,20 +20,20 @@ All integrations require an iOS 15+ deployment target and a Swift 6.2+ compiler 
 | Production `Sources/LSToast/LSToast.swift` SHA-256 | `4df155f04f4fa49d2171effc97781f03c32db5752bdb019ac3cfa2f1dc69c199` |
 | Runtime environment | Xcode 27.1 (27A9275), Swift 6.4, macOS 27.0; arm64 iPhone 17 simulator, iOS 27.0 (24A434) |
 | SPM hosted isolation tests through the local demo | Passed: 11 test definitions, 16 executions including parameterized cases; 0 failures and 0 skipped |
-| CocoaPods native consumer installation and hosted tests | PENDING |
+| CocoaPods native consumer installation and hosted tests | Passed through the normal public index: 11 test definitions, 16 expanded executions; 0 failures and 0 skipped |
 | Carthage clean framework build and consumer hosted tests | Passed: 11 test definitions, 16 executions including parameterized cases; 0 failures and 0 skipped |
-| Native dependency public-index installation | PENDING |
+| Native dependency public-index installation | Passed; the Demo Podfile declares only LSToast, and its lock contains LSToast 2.0.0 and LSTPopViewSwift 0.1.0 |
 | Strict CocoaPods lint with the published native dependency supplied using `--external-podspecs` | Passed, exit 0; no warning allowance, skipped checks, or deployment-floor override |
-| Strict CocoaPods lint through the normal public index | PENDING after CDN propagation |
+| Strict CocoaPods lint through the normal public index | Passed, exit 0, after the official CDN version directory propagated; no overrides or weakened checks |
 | Remote 2.0.0 SPM version installation and hosted tests | PENDING |
 | Remote 2.0.0 CocoaPods Git-tag installation | PENDING |
 | Remote 2.0.0 Carthage dependency resolution | PENDING |
 
-The SPM and Carthage result bundles each report 11 test definitions and 16 executions after expanding the dynamic parameters, with no failures, skips, expected failures, or runtime warnings. They exercise the same suite through separate integrations, not 22 unique test definitions. The suite covers real UIKit windows and popup instances: business popup/waiting queue isolation, hit testing through the toast, input focus, key-window preservation, replacement, old handles and timers, independent windows, external removal, invalid input, safe-area layout, and release after expiry.
+The SPM, CocoaPods, and Carthage result bundles each report 11 test definitions and 16 executions after expanding the dynamic parameters, with no failures, skips, expected failures, or runtime warnings. They exercise the same suite through separate integrations, not 33 unique test definitions. The suite covers real UIKit windows and popup instances: business popup/waiting queue isolation, hit testing through the toast, input focus, key-window preservation, replacement, old handles and timers, independent windows, external removal, invalid input, safe-area layout, and release after expiry.
 
 The Carthage source build produced both dynamic XCFrameworks with `ios-arm64` and `ios-arm64_x86_64-simulator` slices. The LSToast framework links `LSTPopViewSwift`; its production source hash matches the audited candidate above. Those actual frameworks were used by the Carthage consumer tests. A device slice does not establish physical-device execution or distribution signing.
 
-The external-podspec lint downloaded the public native source tag and passed strict validation. It does not prove ordinary public-index resolution. The first ordinary-index attempt was blocked by the newly published Pod version directory propagating through the CDN; the normal-index check is tracked independently above. No `--allow-warnings`, `--skip-import-validation`, or iOS target-floor workaround was used.
+The external-podspec lint downloaded the public native source tag and passed strict validation. It does not prove ordinary public-index resolution. The first ordinary-index attempt was blocked by the newly published Pod version directory propagating through the CDN; the final normal-index lint and hosted tests subsequently passed independently. No `--allow-warnings`, `--skip-import-validation`, or iOS target-floor workaround was used.
 
 Reproduce the SPM run with `scripts/test-demo.sh`. For CocoaPods and Carthage, follow the corresponding example README and run the shared `LSToastDemo` scheme on an available iOS 16+ simulator with a fresh result directory. Hosted tests need iOS 16 for Swift Testing / ContinuousClock; the library and Demo App declare iOS 15 support.
 
