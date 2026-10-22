@@ -1,12 +1,8 @@
 import UIKit
 import LSToast
-#if LSTOAST_COCOAPODS
-import LSTPopView
-#else
 import LSTPopViewSwift
-#endif
 
-/// This app depends on the local LSToast package only. Its LSTPopView dependency
+/// Every consumer declares only LSToast. Its native LSTPopViewSwift dependency
 /// is also available to the app for normal business popup presentation.
 @MainActor
 final class DemoViewController: UIViewController {
@@ -88,7 +84,7 @@ final class DemoViewController: UIViewController {
         stack.addArrangedSubview(DemoStyle.card(title: "02  每次显示，都有边界", subtitle: "Latest message wins. Old handles cannot dismiss a newer toast.", content: lifecycle))
 
         let coexistence = DemoStyle.stack(spacing: 10)
-        coexistence.addArrangedSubview(DemoStyle.label("在真实 LSTPopView 弹窗里输入，再显示或隐藏 Toast。等待中的弹窗只会在业务弹窗关闭后出现。", size: 14, color: .secondaryLabel))
+        coexistence.addArrangedSubview(DemoStyle.label("在真实 LSTPopViewSwift 弹窗里输入，再显示或隐藏 Toast。等待中的弹窗只会在业务弹窗关闭后出现。", size: 14, color: .secondaryLabel))
         coexistence.addArrangedSubview(DemoStyle.button("打开业务弹窗与等待队列", symbol: "rectangle.on.rectangle",
                                                        id: "demo.openBusiness", primary: true) { [weak self] in
             self?.openBusinessPopup()
@@ -123,7 +119,7 @@ final class DemoViewController: UIViewController {
         brand.addArrangedSubview(UIView())
         content.addArrangedSubview(brand)
         content.addArrangedSubview(DemoStyle.label("轻提示，不打断。", size: 22, weight: .semibold))
-        content.addArrangedSubview(DemoStyle.label("A small toast. A smooth experience.\n基于 LSTPopView，让业务弹窗按原计划继续。", size: 13, color: .secondaryLabel))
+        content.addArrangedSubview(DemoStyle.label("A small toast. A smooth experience.\n基于 LSTPopViewSwift，让业务弹窗按原计划继续。", size: 13, color: .secondaryLabel))
         content.addArrangedSubview(DemoStyle.row(
             DemoStyle.button("显示 Toast", symbol: "sparkles", id: "demo.basic", primary: true) { [weak self] in
                 self?.show("操作成功 · Saved successfully")
@@ -146,7 +142,7 @@ final class DemoViewController: UIViewController {
         label.textColor = DemoStyle.accent
         label.accessibilityIdentifier = "demo.code"
         code.addArrangedSubview(label)
-        code.addArrangedSubview(DemoStyle.label("只添加 LSToast，LSTPopView 会作为独立依赖自动下载。\nAdd LSToast once. Its popup dependency resolves automatically.", size: 12, color: .secondaryLabel))
+        code.addArrangedSubview(DemoStyle.label("只添加 LSToast，原生 LSTPopViewSwift 会作为独立依赖自动下载。\nAdd LSToast once. Its native Swift popup dependency resolves automatically.", size: 12, color: .secondaryLabel))
         return DemoStyle.card(title: "从一行代码开始", subtitle: "Small API, explicit ownership.", content: code)
     }
 

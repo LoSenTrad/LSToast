@@ -3,20 +3,9 @@ use_frameworks!
 project 'LSToastDemo.xcodeproj'
 
 target 'LSToastDemo' do
-  # Only LSToast is declared. LSTPopView and LSTTimer are resolved automatically.
+  # Only LSToast is declared. Native LSTPopViewSwift is resolved automatically.
   pod 'LSToast', :path => '../..'
   target 'LSToastTests' do
     inherit! :search_paths
-  end
-end
-
-post_install do |installer|
-  minimum = Gem::Version.new('15.0')
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      current = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-      next unless current.to_s.match?(/\A\d+(?:\.\d+)*\z/) && Gem::Version.new(current) < minimum
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-    end
   end
 end

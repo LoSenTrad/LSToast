@@ -1,8 +1,10 @@
 # LSToast Demo
 
-一个纯 UIKit、无需账号或后端的独立示例。工程只添加仓库根目录的本地 **LSToast** Swift package；`LSTPopViewSwift` 由该 package 的独立依赖自动解析。示例直接 `import LSTPopViewSwift` 来展示真实业务弹窗与等待队列。
+LSToast 2.0 的独立 UIKit 示例，无需账号或后端。工程只添加仓库根目录的本地 **LSToast** Swift package；原生 `LSTPopViewSwift` 由该 package 的独立依赖自动解析。示例直接 `import LSTPopViewSwift` 来展示真实业务弹窗与等待队列。
 
 ## 在 Xcode 中运行
+
+需要 Xcode 26+、Swift 6.2+ 编译器。App 与库最低支持 iOS 15；宿主测试使用 Swift Testing，需要 iOS 16+ 模拟器。CocoaPods、SPM、Carthage 三个示例均使用 `import LSTPopViewSwift`。
 
 1. 打开 `Examples/LSToastDemo/LSToastDemo.xcodeproj`。
 2. 等待 Swift Package Manager 解析依赖。
