@@ -1,10 +1,6 @@
 import UIKit
 import ObjectiveC
-#if LSTOAST_COCOAPODS
-import LSTPopView
-#else
 import LSTPopViewSwift
-#endif
 
 /// 每个业务窗口独立的轻提示。只管理自己的 LSTPopView，不清空或推进业务弹窗队列。
 @MainActor
@@ -78,7 +74,7 @@ fileprivate final class LSToastPresenter {
         let id = UUID()
         requestID = id
         expiry?.cancel(); expiry = nil
-        // Advance the generation before removing the old popup: old completions cannot clear the new request.
+        // 先推进请求标识再移除旧弹窗，避免旧回调清理后来的提示。
         popup?.dismissStyle = .NO
         popup?.dismiss()
         host?.removeFromSuperview()
@@ -92,9 +88,7 @@ fileprivate final class LSToastPresenter {
                                                        popStyle: .fade, dismissStyle: .fade) else {
             host.removeFromSuperview(); return nil
         }
-        #if !LSTOAST_COCOAPODS
         guard popup.isPresentationContextValid else { host.removeFromSuperview(); return nil }
-        #endif
         self.host = host; self.popup = popup
         popup.accessibilityIdentifier = "lst.toast.popup"
         popup.groupId = "LSToast.private"
@@ -104,7 +98,7 @@ fileprivate final class LSToastPresenter {
         popup.isUserInteractionEnabled = false
         popup.popDuration = 0.15
         popup.dismissDuration = 0.15
-        // Own the deadline in the wrapper: both upstream engines have identical replacement/lifetime semantics.
+        // 倒计时由吐司持有，取消旧任务后再按本次请求标识关闭，避免影响替换后的实例。
         popup.showTime = 0
         host.configure(popup: popup, content: content, position: position)
         host.onPopupRemoved = { [weak self, weak host] in self?.finishIfRemoved(id, host: host) }
@@ -126,7 +120,7 @@ fileprivate final class LSToastPresenter {
     func hide(requestID id: UUID? = nil, animated: Bool) {
         guard id == nil || id == requestID else { return }
         expiry?.cancel(); expiry = nil
-        // The OC engine reads the property when resolving duration; set it before the common dismiss() API.
+        // 只关闭当前持有的 Swift 弹窗实例，保留业务弹窗及其队列。
         popup?.dismissStyle = animated ? .fade : .NO
         popup?.dismiss()
         finishIfRemoved(requestID, host: host)
@@ -151,9 +145,8 @@ private final class LSToastHostView: UIView {
     override func willRemoveSubview(_ subview: UIView) {
         super.willRemoveSubview(subview)
         guard subview === popup else { return }
-        // OC didDismiss is deallocation-based; use physical view removal for both engines instead.
-        // UIKit also calls this during host deallocation. Creating a new weak reference
-        // to self there would trap; the existing callback already holds only weak references.
+        // 以视图真正移除作为清理时机，也覆盖业务方直接关闭依赖库中吐司实例的情况。
+        // UIKit 在宿主析构时也会调用这里；复用已有弱引用回调，避免对析构中的 self 新建弱引用。
         let notifyRemoval = onPopupRemoved
         DispatchQueue.main.async { notifyRemoval?() }
     }

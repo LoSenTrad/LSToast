@@ -34,7 +34,7 @@ jobs:
           version = subprocess.check_output(['xcrun', 'swift', '--version'], text=True)
           match = re.search(r'Swift version (\d+)\.(\d+)', version)
           if not match or tuple(map(int, match.groups())) < (6, 2):
-              raise SystemExit('SPM dependencies require Swift 6.2 / Xcode 26 or newer.')
+              raise SystemExit('LSTPopViewSwift requires Swift 6.2 / Xcode 26 or newer for every integration.')
           PY
       - name: Check documentation
         run: |
@@ -69,8 +69,6 @@ jobs:
       - name: Install CocoaPods
         run: gem install cocoapods -v 1.16.2 --no-document
       - name: Validate the pod and transitive dependencies
-        env:
-          XCODE_XCCONFIG_FILE: ${{ github.workspace }}/Tools/iOS15.xcconfig
         run: pod lib lint LSToast.podspec --platforms=ios --verbose
 
   carthage:

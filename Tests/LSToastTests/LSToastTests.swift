@@ -1,20 +1,12 @@
 import UIKit
 import Testing
 import LSToast
-#if LSTOAST_COCOAPODS
-import LSTPopView
-#else
 import LSTPopViewSwift
-#endif
 
 @MainActor
 private final class ToastFixture {
     private var allPopups: [LSTPopView] {
-        #if LSTOAST_COCOAPODS
-        return LSTPopView.getAllPopView().compactMap { $0 as? LSTPopView }
-        #else
         return LSTPopView.getAllPopView()
-        #endif
     }
     let window: UIWindow
     let parent: UIView
@@ -181,7 +173,7 @@ struct LSToastTests {
         let token = try #require(LSToast.show("有效", in: f.window, duration: duration))
         #expect(LSToast.show(" \n\t", in: f.window) == nil)
         #expect(token.isVisible)
-        #expect(f.toasts.first?.showTime == 0) // Wrapper owns the deadline in both dependency implementations.
+        #expect(f.toasts.first?.showTime == 0) // 吐司持有自己的倒计时，不借用业务弹窗的计时状态。
     }
 
     @Test("真实自动到期清理宿主、manager登记及内容弱引用")
