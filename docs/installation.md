@@ -27,7 +27,7 @@ end
 
 执行 `pod install`，打开 App 的 `.xcworkspace`。`LSTPopViewSwift` 会由依赖声明自动获取，无需另外声明。LSToast 2.0 的依赖图不再引入旧 Objective-C `LSTPopView` 和 `LSTTimer`，两个原生 Pod 的最低系统均为 iOS 15。
 
-**2.0.0 的公共 Specs 发布正在验证中。** 上面的声明在对应公共索引发布完成后可用；以 [2.0.0 验证记录](validation.md) 中的实际发布结果为准。对应 Git tag 安装声明为：
+**[2.0.0 已发布到公共 Specs](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/2.0.0/LSToast.podspec.json)。** 安装与测试证据见 [2.0.0 验证记录](validation.md)。也可指定已发布的 Git tag：
 
 ```ruby
 pod 'LSToast', :git => 'https://github.com/LoSenTrad/LSToast.git', :tag => '2.0.0'

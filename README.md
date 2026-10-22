@@ -59,7 +59,7 @@ end
 
 执行 `pod install`，然后打开生成的 `.xcworkspace`。Podspec 会自动解析原生 Swift `LSTPopViewSwift`，不需要再声明弹窗库；两个 Pod 的最低系统均为 iOS 15。
 
-**2.0.0 的公共 Specs 发布正在验证中。** 本文中的 2.0 安装声明以对应发布标签和公共索引就绪为前提；实际状态见 [2.0.0 验证记录](docs/validation.md)。1.0.0 已发布的标签和 Specs 保留历史行为，不会被覆盖。
+**2.0.0 已发布到 [GitHub Releases](https://github.com/LoSenTrad/LSToast/releases/tag/2.0.0) 和 [CocoaPods Specs](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/2.0.0/LSToast.podspec.json)。** 三种接入方式统一自动获取原生 Swift 依赖，实际安装与测试结果见 [2.0.0 验证记录](docs/validation.md)。1.0.0 已发布的标签和 Specs 保留历史行为，不会被覆盖。
 
 对应 Git tag 安装写法：
 

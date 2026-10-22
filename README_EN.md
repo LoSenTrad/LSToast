@@ -59,7 +59,7 @@ end
 
 Run `pod install` and open the generated `.xcworkspace`. The podspec automatically resolves native Swift `LSTPopViewSwift`; no separate popup declaration is required. Both pods declare iOS 15 as their minimum deployment target.
 
-**Public Specs publication for 2.0.0 is being verified.** The 2.0 installation declarations require the corresponding tag and index entry to be available; consult the [2.0.0 validation record](docs/validation.md) for the actual status. Existing 1.0.0 tags and specifications retain their historical behavior.
+**2.0.0 is published on [GitHub Releases](https://github.com/LoSenTrad/LSToast/releases/tag/2.0.0) and [CocoaPods Specs](https://github.com/CocoaPods/Specs/blob/master/Specs/1/f/d/LSToast/2.0.0/LSToast.podspec.json).** All three integrations automatically resolve the native Swift dependency; see the [2.0.0 validation record](docs/validation.md) for installation and test results. Existing 1.0.0 tags and specifications retain their historical behavior.
 
 The corresponding Git-tag declaration is:
 
